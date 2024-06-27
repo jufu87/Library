@@ -48,19 +48,18 @@ form {
     padding: 50px;
     background-color: brown;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 50px;
 }
 
-.library-books {
+/* .library-books {
     
-}
+} */
 
 .card {
     border-left: 14px black solid;
     border-radius: 20px;
     padding-left: 20px;
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }

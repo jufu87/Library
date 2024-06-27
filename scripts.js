@@ -8,7 +8,23 @@ document.querySelector("#form").style.visibility = "hidden";
 let right = document.querySelector(".right");
 
 // will hold an array of book objects
-const myLibrary = [];
+const myLibrary = [{
+    title: "Night Watch",
+    author: "Terry Pratchett",
+    pages: "464",
+    read: true
+},
+{
+    title: "The Hobbit",
+    author: "J.R.R. Tolkie",
+    pages: "295",
+    read: true
+}];
+
+// temporary to update display with initial objects:
+createCard(myLibrary[0].title, myLibrary[0].author, myLibrary[0].pages, myLibrary[0].read);
+createCard(myLibrary[1].title, myLibrary[1].author, myLibrary[1].pages, myLibrary[1].read);
+
 
 // constructor that builds new book objects
 function Book(title, author, pages, read) {
@@ -22,16 +38,19 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    createCard(title, author, pages, read);
 }
 
-addBookToLibrary("Night Watch", "Terry Pratchett", 464, true);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
+// temporary:
+addBookToLibrary("The Wizard of Earthsea", "Le Guin", 364, true);
+
 // addBookToLibrary(title, author, pages, read);
 
 
 // function that display the books on cards
-function createCard(library) {
-    library.forEach(function (book) {
+function createCard(title, author, pages, read) {
+    // library.forEach(function (book) {
+    console.log(title);
         let card = document.createElement("div");
         let cardUl = document.createElement("ul")
         let cardLiTitle = document.createElement("li")
@@ -48,18 +67,16 @@ function createCard(library) {
         cardUl.appendChild(cardLiPages);
         cardUl.appendChild(cardLiRead);
 
-        cardLiTitle.textContent = "Title: " + book.title;
-        cardLiAuthor.textContent = "Author: " + book.author;
-        cardLiPages.textContent = "Page count: " + book.pages;
-        cardLiRead.textContent = "Have read: " + book.read;
+        cardLiTitle.textContent = "Title: " + title;
+        cardLiAuthor.textContent = "Author: " + author;
+        cardLiPages.textContent = "Page count: " + pages;
+        cardLiRead.textContent = "Have read: " + read;
         // console.log(book.title);
         // console.log(book.author);
         // console.log(book.pages);
         // console.log(book.read);
-    })
+    // })
 }
-
-createCard(myLibrary);
 
 
 // eventlistener below is to make form visible
@@ -67,4 +84,18 @@ createCard(myLibrary);
 newBookBtn.addEventListener('click', function () {
     document.querySelector("#form").style.visibility = "visible";
     console.log("clicked");
+});
+
+
+
+// getting values from the form
+const titleDom=document.querySelector('#title');
+const authorDom= document.querySelector('#author');
+const pagesDom=document.querySelector('#pages');
+const readDom=document.querySelector('#read');
+const confirmBtn=document.querySelector('#confirm-btn');
+
+confirmBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    addBookToLibrary(titleDom.value, authorDom.value, pagesDom.value, readDom.value);
 });
