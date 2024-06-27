@@ -47,17 +47,24 @@ form {
     width: 70%;
     padding: 50px;
     background-color: brown;
-}
-
-.library-books {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 25px;
 }
 
-.book-card {
+.library-books {
+    
+}
+
+.card {
     border-left: 14px black solid;
     border-radius: 20px;
     padding-left: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+}
+
+ul {
+    padding: 10px;
 }
