@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: "Roboto", Helvetica, Arial, Helvetica, sans-serif;
+    list-style: none;
 }
 
 html {
@@ -25,8 +26,38 @@ body {
     height: 600px;
 } */
 
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    background-color: rgb(104, 104, 104);
+}
+
 form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.right {
+    height: 100%;
+    width: 70%;
+    padding: 50px;
+    background-color: brown;
+}
+
+.library-books {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 25px;
+}
+
+.book-card {
+    border-left: 14px black solid;
+    border-radius: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
