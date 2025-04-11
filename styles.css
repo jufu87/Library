@@ -1,3 +1,25 @@
+:root {
+    /* --navy: #233D4D;
+    --orange: #FE7F2D;
+    --yellow: #FCCA46;
+    --lightgreen: #A1C181;
+    --lightblue: #619B8A; */
+
+    /* --lightpurple: #9FB3DF;
+    --lightblue: #9EC6F3;
+    --lighterblue: #BDDDE4;
+    --parchment: #FFF1D5; */
+    
+    --color-primary: #2F4858;
+    --color-secondary: #33658A;
+    --color-accent: #F6AE2D;
+    --color-background: #F0F4F8;
+    --color-surface: #FFFFFF;
+    --color-text-main: #2D2D2D;
+    --color-text-muted: #6C7A89;
+    --color-link-hover: #FF6600;    
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,14 +33,14 @@ html {
 }
 
 div {
-    outline: 1px red solid;
+    outline: 1px rgba(255, 0, 0, 0.15) solid;
 }
 
 body {
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 /* .form-div {
@@ -32,8 +54,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 30%;
-    background-color: rgb(104, 104, 104);
+    width: 15%;
+    background-color: var(--color-primary);
 }
 
 form {
@@ -46,7 +68,7 @@ form {
     height: 100%;
     width: 70%;
     padding: 50px;
-    background-color: brown;
+    background-color: var(--color-background);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 50px;
@@ -57,11 +79,14 @@ form {
 } */
 
 .card {
-    border-left: 14px black solid;
+    border-left: 14px var(--lighterblue) solid;
+    background-color: var(--color-surface);
     border-radius: 20px;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
+    box-shadow: 10px 5px 5px rgba(255, 255, 255, 0.3);
+
 }
 
 ul {
