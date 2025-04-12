@@ -29,7 +29,7 @@ const myLibrary = [
 
 // Show the modal
 showButton.addEventListener("click", () => {
-  bookDialog.showModal();
+  bookDialog.show();
 });
 
 // Close the modal
