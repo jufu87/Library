@@ -1,99 +1,59 @@
 :root {
-    /* --navy: #233D4D;
-    --orange: #FE7F2D;
-    --yellow: #FCCA46;
-    --lightgreen: #A1C181;
-    --lightblue: #619B8A; */
-
-    /* --lightpurple: #9FB3DF;
-    --lightblue: #9EC6F3;
-    --lighterblue: #BDDDE4;
-    --parchment: #FFF1D5; */
-
-    --color-primary: #2F4858;
-    --color-secondary: #33658A;
-    --color-accent: #F6AE2D;
-    --color-background: #F0F4F8;
-    --color-surface: #FFFFFF;
-    --color-text-main: #2D2D2D;
-    --color-text-muted: #6C7A89;
-    --color-link-hover: #FF6600;
-
-    /* | Role           | Color Code      | Notes                                                                |
-    |----------------|-----------------|----------------------------------------------------------------------|
-    | **Primary**    | `#2F4858`       | Deep slate blue — serious, trustworthy, great for headers/nav        |
-    | **Secondary**  | `#33658A`       | Muted teal — inviting, good for buttons and accents                  |
-    | **Accent**     | `#F6AE2D`       | Warm amber — adds energy to CTAs and highlights                      |
-    | **Background** | `#F0F4F8`       | Very light gray-blue — easy on the eyes for backgrounds              |
-    | **Surface**    | `#FFFFFF`       | Clean white — card backgrounds or content areas                      |
-    | **Text (Main)**| `#2D2D2D`       | Neutral dark gray — better than black for long reading               |
-    | **Text (Muted)*| `#6C7A89`       | Cool gray — subtle for less important text                           |
-    | **Link Hover** | `#FF6600`       | Orange — optional vibrant hover effect (pairs well with the accent)  | */
-
-    /* ### Design Tips:
-    - Use the **primary** color for headers, navbars, and branding.
-    - The **secondary** color is great for interactive elements like buttons or active tabs.
-    - Keep **accent** colors limited to CTAs, highlights, or hover states — don’t overuse.
-    - Stick with a **light background** for readability, and **dark text** for high contrast.
-    - Consider using **serif fonts** for a classic library feel, or **sans-serif** for a modern look. */
-
-}
-
-* {
+    --color-primary: #2f4858;
+    --color-secondary: #33658a;
+    --color-accent: #f6ae2d;
+    --color-background: #f0f4f8;
+    --color-surface: #ffffff;
+    --color-text-main: #2d2d2d;
+    --color-text-muted: #6c7a89;
+    --color-link-hover: #ff6600;
+  }
+  
+  * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Roboto", Helvetica, Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
     color: var(--color-text-main);
     list-style: none;
-}
-
-html {
+  }
+  
+  html, body {
     height: 100%;
-}
-
-div {
-    outline: 1px rgba(255, 0, 0, 0.15) solid;
-}
-
-body {
-    height: 100%;
+  }
+  
+  div {
+    outline: 1px rgba(255, 0, 0, 0.15) solid; /* Debugging only */
+  }
+  
+  body {
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-}
-
-/* .form-div {
-    
-    height: 600px;
-} */
-
-.left {
+  }
+  
+  /* Sidebar with form */
+  .sidebar {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /* puts the button at the top */
     align-items: center;
     height: 100%;
     width: 15%;
     min-width: 350px;
-    /* TEMPORARY, NOT RESPONSIVE */
     background-color: var(--color-primary);
-}
-
-.form-div {
+  }
+  
+  .form-wrapper {
     margin-top: 30px;
-    /* gives some room for the button at the top */
-}
-
-form {
+  }
+  
+  #bookForm {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.right {
+  }
+  
+  /* Main library area */
+  .library-container {
     height: 100%;
     width: 85%;
     padding: 50px;
@@ -101,13 +61,9 @@ form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 50px;
-}
-
-/* .library-books {
-    
-} */
-
-.card {
+  }
+  
+  .book-card {
     border-left: 14px var(--color-secondary) solid;
     background-color: var(--color-surface);
     border-radius: 20px;
@@ -115,33 +71,18 @@ form {
     display: flex;
     flex-direction: column;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.1);
-
-
-
-    /* align-self: start;        */
-    /* Keeps cards aligned at top of grid cells */
-
-    /* height: auto;             */
-    /* Allow card height to grow based on content */
-
-    /* max-height: 100%;         */
-    /* Prevent from spilling out of the row */
-
-    /* overflow: hidden;         */
-    /* Hide overflow if it ever grows too big */
-}
-
-ul {
+  }
+  
+  .book-card ul {
     padding: 10px;
-}
-
-dialog {
+  }
+  
+  /* Modal styles */
+  dialog {
     position: absolute;
-    /* Now it positions inside `.left` */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* Centers inside parent */
     border: none;
     border-radius: 8px;
     padding: 2em;
@@ -150,8 +91,9 @@ dialog {
     z-index: 10;
     min-width: 300px;
     border-left: 14px var(--color-secondary) solid;
-}
-
-dialog::backdrop {
+  }
+  
+  dialog::backdrop {
     background: rgba(0, 0, 0, 0.5);
-}
+  }
+  
