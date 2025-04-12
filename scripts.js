@@ -11,20 +11,8 @@ const submitButton = document.querySelector("#submitButton");
 const cancelButton = document.querySelector("#cancelButton");
 
 const library = [
-    {
-        id: crypto.randomUUID(),
-        title: "Night Watch",
-        author: "Terry Pratchett",
-        pages: "464",
-        read: true,
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        pages: "295",
-        read: true,
-    },
+    new Book("Night Watch", "Terry Pratchett", "464", true),
+    new Book("The Hobbit", "J.R.R. Tolkien", "295", true),
 ];
 
 // Show the modal
@@ -59,6 +47,11 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+// Lets every book toggle its own .read status
+Book.prototype.toggleRead = function () {
+    this.read = !this.read;
+};
+
 // Add a book and render it
 function addBook(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
@@ -77,17 +70,63 @@ function renderBookCard(book) {
     const titleItem = document.createElement("li");
     const authorItem = document.createElement("li");
     const pagesItem = document.createElement("li");
-    const readItem = document.createElement("li");
 
     titleItem.textContent = `Title: ${book.title}`;
     authorItem.textContent = `Author: ${book.author}`;
     pagesItem.textContent = `Page count: ${book.pages}`;
-    readItem.textContent = `Have read: ${book.read ? "Yes" : "No"}`;
 
-    list.append(titleItem, authorItem, pagesItem, readItem);
+    list.append(titleItem, authorItem, pagesItem);
     card.appendChild(list);
+
+    // Button container (flex row)
+    const buttonGroup = document.createElement("div");
+    buttonGroup.style.display = "flex";
+    buttonGroup.style.gap = "10px";
+    buttonGroup.style.padding = "0.5em 1em";
+
+    // Toggle Read button
+    const toggleButton = document.createElement("button");
+    toggleButton.textContent = book.read ? "Read" : "Not read";
+    toggleButton.classList.add("toggle-button");
+
+    toggleButton.addEventListener("click", () => {
+        book.toggleRead();
+        toggleButton.textContent = book.read ? "Read" : "Not read";
+    });
+
+    // Delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", () => {
+        deleteBook(book.id);
+    });
+
+    buttonGroup.append(toggleButton, deleteButton);
+    card.appendChild(buttonGroup);
+
     libraryContainer.appendChild(card);
 }
+
+
+
+function deleteBook(id) {
+    // Remove book from the library array
+    const index = library.findIndex(book => book.id === id);
+    if (index !== -1) {
+        library.splice(index, 1);
+    }
+
+    // Remove card from the DOM
+    const card = document.querySelector(`.book-card[data-id="${id}"]`);
+    if (card) {
+        card.remove();
+    }
+}
+
+
+
 
 // Initial render
 library.forEach(renderBookCard);
