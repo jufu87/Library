@@ -24,7 +24,7 @@ body {
 }
 
 div {
-    outline: 1px rgba(255, 0, 0, 0.15) solid;
+    /* outline: 1px rgba(255, 0, 0, 0.15) solid; */
     /* Debugging only */
 }
 
@@ -81,34 +81,43 @@ body {
     padding: 50px;
     background-color: var(--color-background);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(5, 1fr); /* ⛔️ Max of 4 cards per row */
     gap: 50px;
 }
 
 .book-card {
     aspect-ratio: 2 / 3;
-    max-height: 80vh; /* Prevents cards from exceeding 80% of screen height */
-    width: auto; /* Let grid or aspect-ratio handle width */
+    width: 100%;
+    max-height: 80vh;
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem); /* Shrinks only when needed */
+    /* Key to scaling content */
+
     border-left: 14px var(--color-secondary) solid;
     background-color: var(--color-surface);
     border-radius: 20px;
-    padding-left: 20px;
+    padding: 1em;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* Just in case content spills */
 }
 
+
 .book-card ul {
-    padding: 10px;
+    padding: 0.6em;
+    font-size: 0.6em;
+    /* scales with .book-card */
 }
 
 .toggle-button,
 .delete-button {
-    padding: 0.4em 1em;
+    font-size: 0.6em;
+    padding: 0.5em 0.7em;
+
+
     border-radius: 4px;
-    font-size: 0.9rem;
+
     cursor: pointer;
     border: 1px solid var(--color-secondary);
     background-color: var(--color-surface);

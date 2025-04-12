@@ -13,6 +13,10 @@ const cancelButton = document.querySelector("#cancelButton");
 const library = [
     new Book("Night Watch", "Terry Pratchett", "464", true),
     new Book("The Hobbit", "J.R.R. Tolkien", "295", true),
+    new Book("A Wizard of Earthsea", "Ursula K. Le Guin", "205", true),
+    new Book("The Left Hand of Darkness", "Ursula K. Le Guin", "304", false),
+    new Book("The Lord of the Rings", "J.R.R. Tolkien", "1178", true),
+    new Book("Going Postal", "Terry Pratchett", "416", true),
 ];
 
 // Show the modal
