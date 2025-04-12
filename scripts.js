@@ -114,7 +114,6 @@ function renderBookCard(book) {
 }
 
 
-
 function deleteBook(id) {
     // Remove book from the library array
     const index = library.findIndex(book => book.id === id);
@@ -128,9 +127,6 @@ function deleteBook(id) {
         card.remove();
     }
 }
-
-
-
 
 // Initial render
 library.forEach(renderBookCard);
