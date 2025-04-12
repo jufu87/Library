@@ -9,7 +9,7 @@
     --lightblue: #9EC6F3;
     --lighterblue: #BDDDE4;
     --parchment: #FFF1D5; */
-    
+
     --color-primary: #2F4858;
     --color-secondary: #33658A;
     --color-accent: #F6AE2D;
@@ -17,7 +17,26 @@
     --color-surface: #FFFFFF;
     --color-text-main: #2D2D2D;
     --color-text-muted: #6C7A89;
-    --color-link-hover: #FF6600;    
+    --color-link-hover: #FF6600;
+
+    /* | Role           | Color Code      | Notes                                                                |
+    |----------------|-----------------|----------------------------------------------------------------------|
+    | **Primary**    | `#2F4858`       | Deep slate blue — serious, trustworthy, great for headers/nav        |
+    | **Secondary**  | `#33658A`       | Muted teal — inviting, good for buttons and accents                  |
+    | **Accent**     | `#F6AE2D`       | Warm amber — adds energy to CTAs and highlights                      |
+    | **Background** | `#F0F4F8`       | Very light gray-blue — easy on the eyes for backgrounds              |
+    | **Surface**    | `#FFFFFF`       | Clean white — card backgrounds or content areas                      |
+    | **Text (Main)**| `#2D2D2D`       | Neutral dark gray — better than black for long reading               |
+    | **Text (Muted)*| `#6C7A89`       | Cool gray — subtle for less important text                           |
+    | **Link Hover** | `#FF6600`       | Orange — optional vibrant hover effect (pairs well with the accent)  | */
+
+    /* ### Design Tips:
+    - Use the **primary** color for headers, navbars, and branding.
+    - The **secondary** color is great for interactive elements like buttons or active tabs.
+    - Keep **accent** colors limited to CTAs, highlights, or hover states — don’t overuse.
+    - Stick with a **light background** for readability, and **dark text** for high contrast.
+    - Consider using **serif fonts** for a classic library feel, or **sans-serif** for a modern look. */
+
 }
 
 * {
@@ -25,6 +44,7 @@
     margin: 0;
     padding: 0;
     font-family: "Roboto", Helvetica, Arial, Helvetica, sans-serif;
+    color: var(--color-text-main);
     list-style: none;
 }
 
@@ -55,6 +75,8 @@ body {
     align-items: center;
     height: 100%;
     width: 15%;
+    min-width: 350px;
+    /* TEMPORARY, NOT RESPONSIVE */
     background-color: var(--color-primary);
 }
 
@@ -66,7 +88,7 @@ form {
 
 .right {
     height: 100%;
-    width: 70%;
+    width: 85%;
     padding: 50px;
     background-color: var(--color-background);
     display: grid;
@@ -79,7 +101,7 @@ form {
 } */
 
 .card {
-    border-left: 14px var(--lighterblue) solid;
+    border-left: 14px var(--color-secondary) solid;
     background-color: var(--color-surface);
     border-radius: 20px;
     padding-left: 20px;
@@ -87,8 +109,31 @@ form {
     flex-direction: column;
     box-shadow: 10px 5px 5px rgba(255, 255, 255, 0.3);
 
+
+    /* align-self: start;        */
+    /* Keeps cards aligned at top of grid cells */
+
+    /* height: auto;             */
+    /* Allow card height to grow based on content */
+
+    /* max-height: 100%;         */
+    /* Prevent from spilling out of the row */
+
+    /* overflow: hidden;         */
+    /* Hide overflow if it ever grows too big */
 }
 
 ul {
     padding: 10px;
+}
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
 }
