@@ -17,10 +17,13 @@ const library = [
     new Book("The Left Hand of Darkness", "Ursula K. Le Guin", "304", false),
     new Book("The Lord of the Rings", "J.R.R. Tolkien", "1178", true),
     new Book("Going Postal", "Terry Pratchett", "416", true),
-    new Book("The Count of Monte Cristo", "Alexandre Dumas", "1276", true),
-    new Book("Dune", "Frank Herbert", "412", true),
+    // new Book("The Count of Monte Cristo", "Alexandre Dumas", "1276", true),
+    // new Book("Dune", "Frank Herbert", "412", true),
 
-
+    // new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", "224", true),
+    // new Book("The Name of the Wind", "Patrick Rothfuss", "662", true),
+    // new Book("The Wise Man's Fear", "Patrick Rothfuss", "994", true),
+    // new Book("The Lies of Locke Lamora", "Scott Lynch", "722", false),
 
 ];
 
@@ -78,13 +81,17 @@ function renderBookCard(book) {
 
     const titleItem = document.createElement("li");
     const authorItem = document.createElement("li");
+    const statusItem = document.createElement("li");
     const pagesItem = document.createElement("li");
 
-    titleItem.textContent = `Title: ${book.title}`;
-    authorItem.textContent = `Author: ${book.author}`;
+
+    titleItem.textContent = `${book.title}`;
+    authorItem.textContent = `By ${book.author}`;
+    statusItem.textContent = `Status: ${book.read ? "Read" : "Not read"}`;
     pagesItem.textContent = `Pages: ${book.pages}`;
 
-    list.append(titleItem, authorItem, pagesItem);
+
+    list.append(titleItem, authorItem, statusItem, pagesItem);
     card.appendChild(list);
 
     // Button container (flex row)
@@ -95,6 +102,8 @@ function renderBookCard(book) {
     const toggleButton = document.createElement("button");
     toggleButton.classList.add("toggle-button");
     toggleButton.setAttribute("aria-label", book.read ? "Mark as unread" : "Mark as read");
+
+
 
     const toggleIcon = document.createElement("img");
     toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
@@ -109,6 +118,7 @@ function renderBookCard(book) {
         toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
         toggleIcon.alt = book.read ? "Read" : "Not read";
         toggleButton.setAttribute("aria-label", book.read ? "Mark as unread" : "Mark as read");
+        statusItem.textContent = `Status: ${book.read ? "Read" : "Not read"}`;
     });
 
     // Delete button
