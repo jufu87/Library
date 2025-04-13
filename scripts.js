@@ -29,7 +29,7 @@ const library = [
 
 // Show the modal
 openModalButton.addEventListener("click", () => {
-    bookModal.show();
+    bookModal.showModal();
 });
 
 // Hide the modal

@@ -223,9 +223,8 @@ button {
 
 
 /* Modal styles */
-dialog {
+/* dialog {
     position: fixed;
-    /* previously absolute */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -240,8 +239,67 @@ dialog {
     max-width: 90vw;
     height: auto;
     border-left: 14px var(--color-secondary) solid;
+} */
+
+.modal-slide-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(500px, 90%);
+    background: var(--color-surface);
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideIn 0.3s ease forwards;
 }
+
+dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    z-index: 999;
+    overflow: hidden;
+}
+
 
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+/* Full-screen overlay to center the panel */
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* align to right side */
+    align-items: center;
+}
+
+/* Sliding panel */
+.modal-panel {
+    width: min(500px, 90%);
+    height: 100%;
+    background: var(--color-surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+    animation: slideIn 1.3s ease forwards;
+    transform: translateX(100%);
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
 }
