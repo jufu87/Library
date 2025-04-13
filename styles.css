@@ -230,8 +230,13 @@ dialog {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
     z-index: 100;
     /* width: 30vw; */
-    height: 40vh;
+    height: 60vh;
     border-left: 14px var(--color-secondary) solid;
+}
+
+#bookForm {
+    display: flex;
+    justify-content: space-between;
 }
 
 dialog::backdrop {
