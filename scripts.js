@@ -2,7 +2,6 @@ const bookModal = document.querySelector("#bookModal");
 const openModalButton = document.querySelector("#openModalButton");
 const bookForm = document.querySelector("#bookForm");
 const libraryContainer = document.querySelector(".library-container");
-
 const titleInput = document.querySelector("#titleInput");
 const authorInput = document.querySelector("#authorInput");
 const pagesInput = document.querySelector("#pagesInput");
@@ -19,12 +18,10 @@ const library = [
     new Book("Going Postal", "Terry Pratchett", "416", true),
     // new Book("The Count of Monte Cristo", "Alexandre Dumas", "1276", true),
     // new Book("Dune", "Frank Herbert", "412", true),
-
     // new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", "224", true),
     // new Book("The Name of the Wind", "Patrick Rothfuss", "662", true),
     // new Book("The Wise Man's Fear", "Patrick Rothfuss", "994", true),
     // new Book("The Lies of Locke Lamora", "Scott Lynch", "722", false),
-
 ];
 
 // Show the modal
@@ -94,28 +91,29 @@ function addBook(title, author, pages, read) {
 
 // Create a book card in the DOM
 function renderBookCard(book) {
+
+    // Create a div, give it the class "book-card" and
     const card = document.createElement("div");
     card.classList.add("book-card");
+    // dataset is a built in object that accesses all html data attributes
+    // Attach it to the unique book id created with crypto.randomUUID
     card.dataset.id = book.id;
 
     const list = document.createElement("ul");
-
     const titleItem = document.createElement("li");
     const authorItem = document.createElement("li");
     const statusItem = document.createElement("li");
     const pagesItem = document.createElement("li");
-
 
     titleItem.textContent = `${book.title}`;
     authorItem.textContent = `By ${book.author}`;
     statusItem.textContent = `Status: ${book.read ? "Read" : "Not read"}`;
     pagesItem.textContent = `Pages: ${book.pages}`;
 
-
     list.append(titleItem, authorItem, statusItem, pagesItem);
     card.appendChild(list);
 
-    // Button container (flex row)
+    // Button container
     const buttonGroup = document.createElement("div");
     buttonGroup.classList.add("button-group");
 
@@ -132,7 +130,6 @@ function renderBookCard(book) {
 
     toggleButton.appendChild(toggleIcon);
 
-
     toggleButton.addEventListener("click", () => {
         book.toggleRead();
         toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
@@ -146,7 +143,6 @@ function renderBookCard(book) {
     deleteButton.classList.add("delete-button");
     deleteButton.setAttribute("aria-label", "Delete book");
     deleteButton.setAttribute("title", "Delete book");
-
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "images/delete-cross.svg";
@@ -164,7 +160,6 @@ function renderBookCard(book) {
 
     libraryContainer.appendChild(card);
 }
-
 
 function deleteBook(id) {
     // Remove book from the library array
