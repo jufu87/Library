@@ -53,6 +53,7 @@ bookModal.addEventListener("click", (event) => {
     }
 });
 
+// For pressing esc
 bookModal.addEventListener("close", () => {
     document.getElementById("siteContent").classList.remove("blurred");
 });
