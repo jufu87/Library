@@ -123,8 +123,7 @@ function renderBookCard(book) {
     const toggleButton = document.createElement("button");
     toggleButton.classList.add("toggle-button");
     toggleButton.setAttribute("aria-label", book.read ? "Mark as unread" : "Mark as read");
-
-
+    toggleButton.setAttribute("title", book.read ? "Mark as unread" : "Mark as read");
 
     const toggleIcon = document.createElement("img");
     toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
@@ -146,6 +145,8 @@ function renderBookCard(book) {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
     deleteButton.setAttribute("aria-label", "Delete book");
+    deleteButton.setAttribute("title", "Delete book");
+
 
     const deleteIcon = document.createElement("img");
     deleteIcon.src = "images/delete-cross.svg";
