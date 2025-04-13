@@ -17,6 +17,11 @@ const library = [
     new Book("The Left Hand of Darkness", "Ursula K. Le Guin", "304", false),
     new Book("The Lord of the Rings", "J.R.R. Tolkien", "1178", true),
     new Book("Going Postal", "Terry Pratchett", "416", true),
+    new Book("The Count of Monte Cristo", "Alexandre Dumas", "1276", true),
+    new Book("Dune", "Frank Herbert", "412", true),
+
+
+
 ];
 
 // Show the modal
@@ -77,31 +82,46 @@ function renderBookCard(book) {
 
     titleItem.textContent = `Title: ${book.title}`;
     authorItem.textContent = `Author: ${book.author}`;
-    pagesItem.textContent = `Page count: ${book.pages}`;
+    pagesItem.textContent = `Pages: ${book.pages}`;
 
     list.append(titleItem, authorItem, pagesItem);
     card.appendChild(list);
 
     // Button container (flex row)
     const buttonGroup = document.createElement("div");
-    buttonGroup.style.display = "flex";
-    buttonGroup.style.gap = "10px";
-    buttonGroup.style.padding = "0.5em 1em";
+    buttonGroup.classList.add("button-group");
 
     // Toggle Read button
     const toggleButton = document.createElement("button");
-    toggleButton.textContent = book.read ? "Read" : "Not read";
     toggleButton.classList.add("toggle-button");
+    toggleButton.setAttribute("aria-label", book.read ? "Mark as unread" : "Mark as read");
+
+    const toggleIcon = document.createElement("img");
+    toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
+    toggleIcon.alt = book.read ? "Read" : "Not read";
+    toggleIcon.classList.add("icon");
+
+    toggleButton.appendChild(toggleIcon);
+
 
     toggleButton.addEventListener("click", () => {
         book.toggleRead();
-        toggleButton.textContent = book.read ? "Read" : "Not read";
+        toggleIcon.src = book.read ? "images/book-read.svg" : "images/book-not-read.svg";
+        toggleIcon.alt = book.read ? "Read" : "Not read";
+        toggleButton.setAttribute("aria-label", book.read ? "Mark as unread" : "Mark as read");
     });
 
     // Delete button
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
     deleteButton.classList.add("delete-button");
+    deleteButton.setAttribute("aria-label", "Delete book");
+
+    const deleteIcon = document.createElement("img");
+    deleteIcon.src = "images/delete-cross.svg";
+    deleteIcon.alt = "Delete";
+    deleteIcon.classList.add("icon");
+
+    deleteButton.appendChild(deleteIcon);
 
     deleteButton.addEventListener("click", () => {
         deleteBook(book.id);
