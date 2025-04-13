@@ -30,11 +30,31 @@ const library = [
 // Show the modal
 openModalButton.addEventListener("click", () => {
     bookModal.showModal();
+    document.getElementById("siteContent").classList.add("blurred");
 });
 
 // Hide the modal
 cancelButton.addEventListener("click", () => {
     bookModal.close();
+    document.getElementById("siteContent").classList.remove("blurred");
+});
+
+bookModal.addEventListener("click", (event) => {
+    const rect = bookModal.getBoundingClientRect();
+
+    // If clicked outside the modal's bounding box, close it
+    if (
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+    ) {
+        bookModal.close();
+    }
+});
+
+bookModal.addEventListener("close", () => {
+    document.getElementById("siteContent").classList.remove("blurred");
 });
 
 // Submit the form

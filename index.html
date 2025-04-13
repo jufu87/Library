@@ -15,43 +15,40 @@
 
 <body>
 
-    <div class="website-wrapper">
+    <div class="website-wrapper" id="siteContent">
         <header class="topbar">
             <div id="website-title">My Library</div>
             <button id="openModalButton" aria-label="Add new book">+</button>
-
         </header>
-
-        <div class="form-wrapper">
-
-            <dialog id="bookModal">
-                <div class="modal-overlay">
-                    <div class="modal-slide-panel">
-                        <form id="bookForm">
-                            <label for="titleInput">Title</label>
-                            <input id="titleInput" name="title" type="text" placeholder="Night Watch" required />
-
-                            <label for="authorInput">Author</label>
-                            <input id="authorInput" name="author" type="text" placeholder="Terry Pratchett" required />
-
-                            <label for="pagesInput">Page count</label>
-                            <input id="pagesInput" name="pages" type="number" placeholder="464" required />
-
-                            <label for="readCheckbox">Have you read the book?</label>
-                            <input type="checkbox" id="readCheckbox" name="read" />
-
-                            <button type="submit" id="submitButton">Submit</button>
-                            <button type="button" id="cancelButton">Cancel</button>
-                        </form>
-                    </div>
-                </div>
-            </dialog>
-        </div>
 
         <div class="library-wrapper">
             <main class="library-container"></main>
         </div>
     </div>
+
+    <div class="form-wrapper">
+
+        <dialog id="bookModal">
+            <form id="bookForm">
+                <label for="titleInput">Title</label>
+                <input id="titleInput" name="title" type="text" placeholder="Night Watch" required />
+
+                <label for="authorInput">Author</label>
+                <input id="authorInput" name="author" type="text" placeholder="Terry Pratchett" required />
+
+                <label for="pagesInput">Page count</label>
+                <input id="pagesInput" name="pages" type="number" placeholder="464" required />
+
+                <label for="readCheckbox">Have you read the book?</label>
+                <input type="checkbox" id="readCheckbox" name="read" />
+
+                <button type="submit" id="submitButton">Submit</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </form>
+        </dialog>
+    </div>
+
+
 </body>
 
 </html>
